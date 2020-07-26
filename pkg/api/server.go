@@ -101,6 +101,7 @@ func (s *Server) registerHandlers() {
 	s.router.HandleFunc("/readyz/enable", s.enableReadyHandler).Methods("POST")
 	s.router.HandleFunc("/readyz/disable", s.disableReadyHandler).Methods("POST")
 	s.router.HandleFunc("/panic", s.panicHandler).Methods("GET")
+	s.router.HandleFunc("/oom", s.oomHandler).Methods("GET")
 	s.router.HandleFunc("/status/{code:[0-9]+}", s.statusHandler).Methods("GET", "POST", "PUT").Name("status")
 	s.router.HandleFunc("/store", s.storeWriteHandler).Methods("POST", "PUT")
 	s.router.HandleFunc("/store/{hash}", s.storeReadHandler).Methods("GET").Name("store")
