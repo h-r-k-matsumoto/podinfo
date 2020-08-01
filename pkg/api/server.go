@@ -97,6 +97,8 @@ func (s *Server) registerHandlers() {
 	s.router.HandleFunc("/headers", s.echoHeadersHandler).Methods("GET", "POST")
 	s.router.HandleFunc("/delay/{wait:[0-9]+}", s.delayHandler).Methods("GET").Name("delay")
 	s.router.HandleFunc("/healthz", s.healthzHandler).Methods("GET")
+	s.router.HandleFunc("/healthz/enable", s.enableHealthzHandler).Methods("POST")
+	s.router.HandleFunc("/healthz/disable", s.disableHealthzHandler).Methods("POST")
 	s.router.HandleFunc("/readyz", s.readyzHandler).Methods("GET")
 	s.router.HandleFunc("/readyz/enable", s.enableReadyHandler).Methods("POST")
 	s.router.HandleFunc("/readyz/disable", s.disableReadyHandler).Methods("POST")
