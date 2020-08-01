@@ -62,3 +62,13 @@ func (s *Server) disableReadyHandler(w http.ResponseWriter, r *http.Request) {
 	atomic.StoreInt32(&ready, 0)
 	w.WriteHeader(http.StatusAccepted)
 }
+
+func (s *Server) enableHealthzHandler(w http.ResponseWriter, r *http.Request) {
+	atomic.StoreInt32(&healthy, 1)
+	w.WriteHeader(http.StatusAccepted)
+}
+
+func (s *Server) disableHealthzHandler(w http.ResponseWriter, r *http.Request) {
+	atomic.StoreInt32(&healthy, 0)
+	w.WriteHeader(http.StatusAccepted)
+}
