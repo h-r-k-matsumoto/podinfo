@@ -20,7 +20,7 @@ import (
 func (s *Server) untilHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 
-	until, err := time.Parse("225630",vars["until"])
+	until, err := time.Parse("150405",vars["until"])
 	if err != nil {
 		s.ErrorResponse(w, r, err.Error(), http.StatusBadRequest)
 		return
